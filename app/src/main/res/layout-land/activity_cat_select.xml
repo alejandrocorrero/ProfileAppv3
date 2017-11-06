@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.correro.alejandro.profileapp.ui.CatSelectionActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/ivCat1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/ivCat2"
+        app:layout_constraintEnd_toStartOf="@+id/ivCat4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivCat2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cat1"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivCat2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/ivCat3"
+        app:layout_constraintEnd_toStartOf="@+id/ivCat5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCat1"
+        app:srcCompat="@drawable/cat2"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivCat3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivCat6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCat2"
+        app:srcCompat="@drawable/cat3"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivCat5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/ivCat6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivCat2"
+        app:layout_constraintTop_toBottomOf="@+id/ivCat4"
+        app:srcCompat="@drawable/cat5"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivCat4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/ivCat5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivCat1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cat4"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivCat6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivCat3"
+        app:layout_constraintTop_toBottomOf="@+id/ivCat5"
+        app:srcCompat="@drawable/cat6"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/lblCat1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_main_view_margin_default"
+        android:layout_marginEnd="@dimen/activity_main_view_margin_default"
+        android:alpha="0.6"
+        android:background="@color/test2"
+        android:padding="@dimen/activity_main_lblCatName_padding"
+        android:text="@string/activity_cat_select_cat1_text"
+        android:textColor="@color/activity_main_lblCatName_text_color"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ivCat2"
+        app:layout_constraintEnd_toStartOf="@+id/ivCat4" />
+
+    <TextView
+        android:id="@+id/lblCat4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_main_view_margin_default"
+        android:layout_marginEnd="@dimen/activity_main_view_margin_default"
+        android:alpha="0.6"
+        android:background="@color/test2"
+        android:padding="@dimen/activity_main_lblCatName_padding"
+        android:text="@string/activity_cat_select_cat4_text"
+        android:textColor="@color/activity_main_lblCatName_text_color"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCat4"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/lblCat2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_main_view_margin_default"
+        android:layout_marginEnd="@dimen/activity_main_view_margin_default"
+        android:alpha="0.6"
+        android:background="@color/test2"
+        android:padding="@dimen/activity_main_lblCatName_padding"
+        android:text="@string/activity_cat_select_cat3_text"
+        android:textColor="@color/activity_main_lblCatName_text_color"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ivCat3"
+        app:layout_constraintEnd_toStartOf="@+id/ivCat5" />
+
+    <TextView
+        android:id="@+id/lblCat5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_main_view_margin_default"
+        android:layout_marginEnd="@dimen/activity_main_view_margin_default"
+        android:alpha="0.6"
+        android:background="@color/test2"
+        android:padding="@dimen/activity_main_lblCatName_padding"
+        android:text="@string/activity_cat_select_cat2_text"
+        android:textColor="@color/activity_main_lblCatName_text_color"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ivCat6"
+        app:layout_constraintEnd_toEndOf="@+id/ivCat5" />
+
+    <TextView
+        android:id="@+id/lblCat3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_main_view_margin_default"
+        android:layout_marginEnd="@dimen/activity_main_view_margin_default"
+        android:alpha="0.6"
+        android:background="@color/test2"
+        android:padding="@dimen/activity_main_lblCatName_padding"
+        android:text="@string/activity_cat_select_cat5_text"
+        android:textColor="@color/activity_main_lblCatName_text_color"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCat3"
+        app:layout_constraintEnd_toStartOf="@+id/ivCat6" />
+
+    <TextView
+        android:id="@+id/lblCat6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_main_view_margin_default"
+        android:layout_marginEnd="@dimen/activity_main_view_margin_default"
+        android:alpha="0.6"
+        android:background="@color/test2"
+        android:padding="@dimen/activity_main_lblCatName_padding"
+        android:text="@string/activity_cat_select_cat6_text"
+        android:textColor="@color/activity_main_lblCatName_text_color"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivCat6" />
+
+</android.support.constraint.ConstraintLayout>

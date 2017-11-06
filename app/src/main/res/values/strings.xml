@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Profile</string>
+    <string name="activity_main_txtWeb_hint">(url)</string>
+    <string name="activity_main_lblWeb_text">Web</string>
+    <string name="activity_main_txtAddress_hint">(address)</string>
+    <string name="activity_main_lblAddress_text">Address</string>
+    <string name="activity_main_lblHint_hint">(email)</string>
+    <string name="activity_main_txtPhone_hint">(Phone)</string>
+    <string name="activity_main_lblEmail_text">Email</string>
+    <string name="activity_main_lblPhone_text">Phone Number</string>
+    <string name="activity_main_txtName_text">(name)</string>
+    <string name="activity_main_lblName_text">Name</string>
+    <string name="activity_main_lblCatName_text">Jacob</string>
+    <string name="activity_cat_select_cat1_text">Jacob</string>
+    <string name="activity_cat_select_cat2_text">Dante</string>
+    <string name="activity_cat_select_cat3_text">Noah</string>
+    <string name="activity_cat_select_cat4_text">Sofia</string>
+    <string name="activity_cat_select_cat5_text">Dylan</string>
+    <string name="activity_cat_select_cat6_text">Blancky</string>
+    <string name="main_activity_no_dial_app">dial app don\'t exist</string>
+    <string name="main_activity_no_url_app">Do not exist app to search</string>
+    <string name="main_activity_no_internet">You need internet</string>
+    <string name="main_activity_no_map_app">Do not exist map app</string>
+    <string name="main_activity_no_email_app">Do not exist email app</string>
+    <string name="activity_cat_name">Select avatar</string>
+    <string name="activity_main_page_lblEmpty_text">Click to add a new profile</string>
+    <string name="mnuAdd">Add</string>
+    <string name="MainPageActivity_remove_user">%1$s remove</string>
+    <string name="MainPageActivity_undo_user">Undo</string>
+    <string name="activity_profile_name">User profile</string>
+    <string name="menu_add_title">Update</string>
+    <string name="profile_activity_option_fail">Add valid information</string>
+</resources>

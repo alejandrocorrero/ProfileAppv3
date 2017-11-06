@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Perfil</string>
+    <string name="activity_main_txtWeb_hint">(url)</string>
+    <string name="activity_main_lblWeb_text">Web</string>
+    <string name="activity_main_txtAddress_hint">(direccion)</string>
+    <string name="activity_main_lblAddress_text">Direccion</string>
+    <string name="activity_main_lblHint_hint">(email)</string>
+    <string name="activity_main_txtPhone_hint">(Telefono)</string>
+    <string name="activity_main_lblEmail_text">Email</string>
+    <string name="activity_main_lblPhone_text">Numero de telefono</string>
+    <string name="activity_main_txtName_text">(nombre)</string>
+    <string name="activity_main_lblName_text">Nombre</string>
+    <string name="activity_main_lblCatName_text">Jacob</string>
+    <string name="activity_cat_select_cat1_text">Jacob</string>
+    <string name="activity_cat_select_cat2_text">Dante</string>
+    <string name="activity_cat_select_cat3_text">Noah</string>
+    <string name="activity_cat_select_cat4_text">Sofia</string>
+    <string name="activity_cat_select_cat5_text">Dylan</string>
+    <string name="activity_cat_select_cat6_text">Blancky</string>
+    <string name="main_activity_no_dial_app">No existe la aplicacion para marcar</string>
+    <string name="main_activity_no_url_app">No existe la aplicacion para buscar la url</string>
+    <string name="main_activity_no_internet">Necesitas internet</string>
+    <string name="main_activity_no_map_app">No existe aplicacion para mapas</string>
+    <string name="main_activity_no_email_app">No existe aplicacion para email</string>
+    <string name="activity_cat_name">Seleccionar avatar</string>
+    <string name="activity_main_page_lblEmpty_text">Haz click para añadr un usuario</string>
+    <string name="mnuAdd">Añadir</string>
+    <string name="MainPageActivity_remove_user">%1$s ha sido eliminado</string>
+    <string name="MainPageActivity_undo_user">Deshacer</string>
+    <string name="activity_profile_name">Perfil Usuario</string>
+    <string name="menu_add_title">Actualizar</string>
+    <string name="profile_activity_option_fail">Añade información valida</string>
+</resources>
