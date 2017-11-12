@@ -1,6 +1,7 @@
 package com.correro.alejandro.profileapp.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,18 +9,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.correro.alejandro.profileapp.R;
 import com.correro.alejandro.profileapp.data.Database;
 import com.correro.alejandro.profileapp.data.model.User;
+import com.correro.alejandro.profileapp.data.utils.IntentsUtils;
+import com.correro.alejandro.profileapp.data.utils.NetworkUtils;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-public class MainPageActivity extends AppCompatActivity {
+//TODO ARREGLAR QUE SI NO ES VALIDO LA WEB NO SE GUARDE EN EL USUARIO
+//TODO MODELVIEW, Y GUARDAR SOLO DATOS PRESENTES NO ATUALIZAR LISTVIEW
+public class MainPageActivity extends AppCompatActivity implements MainPageActivityAdapter.Callback {
 
     @BindView(R.id.lvProfile)
     ListView lvProfile;
@@ -43,12 +48,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     private void setupListView() {
         lvProfile.setEmptyView(lblEmpty);
-        lvProfile.setOnItemClickListener((adapterView, view, position, id) -> editUser(adapter.getItem(position), position));
-        lvProfile.setOnItemLongClickListener((adapterView, view, position, l) -> {
-            deleteUser(position);
-            return true;
-        });
-        adapter = new MainPageActivityAdapter(this, users);
+        adapter = new MainPageActivityAdapter(this, users, this);
         lvProfile.setAdapter(adapter);
     }
 
@@ -56,7 +56,7 @@ public class MainPageActivity extends AppCompatActivity {
         User user = adapter.getItem(position);
         database.deleteUser(position);
         adapter.notifyDataSetChanged();
-        Snackbar.make(lvProfile, getString(R.string.MainPageActivity_remove_user,user.getName()), Snackbar.LENGTH_LONG).setAction(getString(R.string.MainPageActivity_undo_user), view -> {
+        Snackbar.make(lvProfile, getString(R.string.MainPageActivity_remove_user, user.getName()), Snackbar.LENGTH_LONG).setAction(getString(R.string.MainPageActivity_undo_user), view -> {
             database.insertUser(user, position);
             adapter.notifyDataSetChanged();
         }).show();
@@ -109,4 +109,59 @@ public class MainPageActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onCall(User user) {
+        Intent intent = IntentsUtils.newDialIntent(user.getPhone());
+        if (IntentsUtils.isActivityAvailable(getApplicationContext(), intent)) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, getString(R.string.main_activity_no_dial_app), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public void onSendEmail(User user) {
+        Intent intent = IntentsUtils.newEmailIntent((user.getEmail()));
+        if (IntentsUtils.isActivityAvailable(getApplicationContext(), intent)) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, getString(R.string.main_activity_no_email_app), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onShowBrowser(User user) {
+        if (NetworkUtils.isConnectionAvailable(getApplicationContext())) {
+            Intent intent = IntentsUtils.newViewUriIntent(Uri.parse(user.getWeb()));
+            if (IntentsUtils.isActivityAvailable(getApplicationContext(), intent)) {
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, getString(R.string.main_activity_no_url_app), Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, getString(R.string.main_activity_no_internet), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onShowAdress(User user) {
+        Intent intent = IntentsUtils.newSearchInMapIntent((user.getMap()));
+        if (IntentsUtils.isActivityAvailable(getApplicationContext(), intent)) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, getString(R.string.main_activity_no_map_app), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public void onDeleteUser(int position) {
+        deleteUser(position);
+    }
+
+    @Override
+    public void onEditUser(User user, int position) {
+        editUser(user, position);
+    }
 }

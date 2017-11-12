@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:descendantFocusability="beforeDescendants">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,8 +15,8 @@
 
         <ImageView
             android:id="@+id/ivAvatar"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginBottom="@dimen/activity_main_view_margin_default"
             android:layout_marginStart="@dimen/activity_main_view_margin_default"
             android:layout_marginTop="@dimen/activity_main_view_margin_default"
@@ -24,6 +25,7 @@
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.36"
             app:srcCompat="@mipmap/ic_launcher"
             tools:ignore="ContentDescription" />
 
@@ -32,14 +34,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="@dimen/activity_main_view_margin_default"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="@dimen/activity_main_view_margin_default"
             android:textAlignment="textStart"
             android:textSize="@dimen/activity_main_item_text_size"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="0.9"
-            app:layout_constraintStart_toEndOf="@+id/ivUser"
+            app:layout_constraintStart_toEndOf="@+id/ivAvatar"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Test text" />
 
@@ -48,10 +50,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="@dimen/activity_main_view_margin_default"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="@dimen/activity_main_view_margin_default"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/ivEmail"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivAvatar"
             app:layout_constraintTop_toBottomOf="@+id/lblName"
             tools:text="Test text" />
 
@@ -59,61 +62,60 @@
             android:id="@+id/lblPhone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_main_view_margin_default"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="@dimen/activity_main_view_margin_default"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="@dimen/activity_main_view_margin_default"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/ivPhone"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivAvatar"
             app:layout_constraintTop_toBottomOf="@+id/lblEmail"
             tools:text="Test text" />
 
-        <ImageView
-            android:id="@+id/ivEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_main_view_margin_default"
-            android:layout_marginTop="@dimen/activity_main_view_margin_default"
-            android:src="@drawable/ic_email_black_24dp"
-            app:layout_constraintStart_toEndOf="@+id/ivAvatar"
-            app:layout_constraintTop_toBottomOf="@+id/lblName"
-            tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/ivPhone"
+        <TextView
+            android:id="@+id/lblEditUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_main_view_margin_default"
-            android:layout_marginTop="@dimen/activity_main_view_margin_default"
-            android:src="@drawable/ic_local_phone_black_24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/lblPhone"
-            app:layout_constraintStart_toEndOf="@+id/ivAvatar"
-            app:layout_constraintTop_toBottomOf="@+id/ivEmail"
-            tools:ignore="ContentDescription" />
-
-        <ImageView
-            android:id="@+id/ivUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_main_view_margin_default"
-            android:layout_marginStart="@dimen/activity_main_view_margin_default"
-            android:layout_marginTop="@dimen/activity_main_view_margin_default"
-            android:src="@drawable/ic_person_black_24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/lblName"
-            app:layout_constraintStart_toEndOf="@+id/ivAvatar"
-            app:layout_constraintTop_toTopOf="@+id/lblName"
-            tools:ignore="ContentDescription" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="8dp"
+            android:text="EDIT"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="?android:attr/floatingToolbarOpenDrawable" />
+            app:layout_constraintHorizontal_bias="0.14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
+
+        <TextView
+            android:id="@+id/lblDeleteUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="DELETE"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
+
+        <TextView
+            android:id="@+id/lblOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+            android:text="OPTIONS"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.86"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
 
 
     </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.correro.alejandro.profileapp.data;
 
+import com.correro.alejandro.profileapp.R;
 import com.correro.alejandro.profileapp.data.model.User;
 
 import java.util.ArrayList;
@@ -11,7 +12,14 @@ public class Database {
     private ArrayList<User> users;
 
     private Database() {
+
         users = new ArrayList<User>();
+        //TODO PRUEBAS
+        users.add(new User("alex1","666666666","alex@hotmail.com", R.drawable.cat1,"https://hotmail.com","casa alex"));
+        users.add(new User("alex2","666666666","alex@hotmail.com", R.drawable.cat1,"https://hotmail.com","casa alex"));
+        users.add(new User("alex3","666666666","alex@hotmail.com", R.drawable.cat1,"https://hotmail.com","casa alex"));
+        users.add(new User("alex4","666666666","alex@hotmail.com", R.drawable.cat1,"https://hotmail.com","casa alex"));
+        users.add(new User("alex5","666666666","alex@hotmail.com", R.drawable.cat1,"https://hotmail.com","casa alex"));
     }
 
     public static synchronized Database getInstance() {

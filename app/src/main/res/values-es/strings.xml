@@ -30,4 +30,8 @@
     <string name="activity_profile_name">Perfil Usuario</string>
     <string name="menu_add_title">Actualizar</string>
     <string name="profile_activity_option_fail">Añade información valida</string>
+    <string name="activity_main_page_listview_options_send_email">Send email</string>
+    <string name="activity_main_page_listview_options_call">Call</string>
+    <string name="activity_main_page_listview_options_adress">Show address in map</string>
+    <string name="activity_main_page_listview_options_browse_web">Browse web</string>
 </resources>

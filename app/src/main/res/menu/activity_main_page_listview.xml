@@ -2,8 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/mnuSendEmail"
+        android:title="@string/activity_main_page_listview_options_send_email"
+        app:showAsAction="withText" />
+    <item
         android:id="@+id/mnuCall"
-        android:title="Call"
+        android:title="@string/activity_main_page_listview_options_call"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/mnuShowAddress"
+        android:title="@string/activity_main_page_listview_options_adress"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/mnuBrowser"
+        android:title="@string/activity_main_page_listview_options_browse_web"
         app:showAsAction="withText" />
 
 </menu>
