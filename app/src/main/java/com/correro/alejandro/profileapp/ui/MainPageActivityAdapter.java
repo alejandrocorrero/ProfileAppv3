@@ -115,7 +115,7 @@ public class MainPageActivityAdapter extends BaseAdapter {
             lblName.setText(user.getName());
             lblEmail.setText(user.getEmail());
             lblPhone.setText(user.getPhone());
-            ivAvatar.setImageResource(user.getAvatar());
+            ivAvatar.setImageResource(user.getAvatar().getId());
             menuPopUp.setOnClickListener(v -> showPopup(user, v));
             lblEditUser.setOnClickListener(v -> mListener.onEditUser(user, position));
             lblDeleteUser.setOnClickListener(v -> mListener.onDeleteUser(position));

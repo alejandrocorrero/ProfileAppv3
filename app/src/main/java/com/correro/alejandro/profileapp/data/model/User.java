@@ -5,6 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class User implements Parcelable {
+
+
     public String getName() {
         return name;
     }
@@ -29,11 +31,11 @@ public class User implements Parcelable {
         this.email = email;
     }
 
-    public int getAvatar() {
+    public Cat getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(Cat avatar) {
         this.avatar = avatar;
     }
 
@@ -56,13 +58,13 @@ public class User implements Parcelable {
     private String name;
     private String phone;
     private String email;
-    private int avatar;
+    private Cat avatar;
 
 
     private String web;
     private String map;
 
-    public User(String name, String phone, String email, int avatar, String web, String map) {
+    public User(String name, String phone, String email, Cat avatar, String web, String map) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -75,9 +77,10 @@ public class User implements Parcelable {
         this.name = in.readString();
         this.phone = in.readString();
         this.email = in.readString();
-        this.avatar = in.readInt();
+        this.avatar = (Cat)in.readValue(getClass().getClassLoader());
         this.map = in.readString();
         this.web = in.readString();
+        
     }
 
     @Override
@@ -85,7 +88,7 @@ public class User implements Parcelable {
         dest.writeString(this.name);
         dest.writeString(this.phone);
         dest.writeString(this.email);
-        dest.writeInt(this.avatar);
+        dest.writeValue(this.avatar);
         dest.writeString(this.map);
         dest.writeString(this.web);
     }

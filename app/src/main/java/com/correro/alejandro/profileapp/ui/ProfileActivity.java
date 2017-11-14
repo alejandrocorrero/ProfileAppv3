@@ -1,11 +1,11 @@
 package com.correro.alejandro.profileapp.ui;
 
 import android.app.Activity;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -67,36 +67,34 @@ public class ProfileActivity extends AppCompatActivity {
     int focusColor;
     private static final String STATE_CAT = "STATE_CAT";
     final int RC_CAT = 1;
-    //Value of the actual ivCat drawable
-    int drawableId;
     private static final String EXTRA_USER = "EXTRA_USER";
     private static final String EXTRA_POSITION = "EXTRA_POSITION";
     private User user = null;
     private int position;
 
+    private ProfileActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = ViewModelProviders.of(this).get(ProfileActivityViewModel.class);
         obtainIntentData(getIntent());
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
         startValues();
-        ivCat.setTag(R.drawable.cat1);
         if (user != null)
-            setDate(user);
-        drawableId = (Integer) ivCat.getTag();
-
+            setValues(user);
+        ivCat.setImageResource(viewModel.getCat().getId());
+        lblCatName.setText(viewModel.getCat().getName());
     }
 
-    private void setDate(User user) {
+    private void setValues(User user) {
         txtName.setText(user.getName());
         txtEmail.setText(user.getEmail());
         txtAddress.setText(user.getMap());
         txtPhone.setText(user.getPhone());
         txtWeb.setText(user.getWeb());
-        ivCat.setImageResource(user.getAvatar());
-        ivCat.setTag(user.getAvatar());
+        viewModel.setCat(user.getAvatar());
 
 
     }
@@ -273,26 +271,9 @@ public class ProfileActivity extends AppCompatActivity {
     @OnClick({R.id.ivCat, R.id.lblCatName})
     public void clickCat() {
         Intent intent = new Intent(this, CatSelectionActivity.class);
-        intent.putExtra("cat", (int) ivCat.getTag());
+        intent.putExtra("cat", viewModel.getCat().getId());
         startActivityForResult(intent, RC_CAT);
 
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putParcelable(STATE_CAT, new Cat(drawableId, lblCatName.getText().toString()));
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Cat cat = savedInstanceState.getParcelable(STATE_CAT);
-        assert cat != null;
-        ivCat.setImageResource(cat.getId());
-        ivCat.setTag(cat.getId());
-        drawableId = cat.getId();
-        lblCatName.setText(cat.getName());
     }
 
     @Override
@@ -301,8 +282,9 @@ public class ProfileActivity extends AppCompatActivity {
             if (data.hasExtra("cat")) {
                 Cat cat = data.getParcelableExtra("cat");
                 ivCat.setImageResource(cat.getId());
-                drawableId = cat.getId();
-                ivCat.setTag(drawableId);
+                viewModel.setCat(cat);
+                if (user != null)
+                    user.setAvatar(cat);
                 lblCatName.setText(cat.getName());
             }
         }
@@ -352,7 +334,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void addStudent() {
         Intent result = new Intent();
-        result.putExtra("user", new User(txtName.getText().toString(), txtPhone.getText().toString(), txtEmail.getText().toString(), (int) ivCat.getTag(), txtWeb.getText().toString(), txtAddress.getText().toString()));
+        //If the web is not correct, dont save it
+        if(!ivWeb.isEnabled())
+            txtWeb.setText("");
+        result.putExtra("user", new User(txtName.getText().toString(), txtPhone.getText().toString(), txtEmail.getText().toString(), viewModel.getCat(), txtWeb.getText().toString(), txtAddress.getText().toString()));
         result.putExtra("position", position);
         setResult(RESULT_OK, result);
         finish();

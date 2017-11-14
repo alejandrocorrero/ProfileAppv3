@@ -1,5 +1,6 @@
 package com.correro.alejandro.profileapp.ui;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,19 +29,18 @@ import butterknife.OnClick;
 public class MainPageActivity extends AppCompatActivity implements MainPageActivityAdapter.Callback {
 
     @BindView(R.id.lvProfile)
-    ListView lvProfile;
+    GridView lvProfile;
     @BindView(R.id.lblEmpty)
     TextView lblEmpty;
     private MainPageActivityAdapter adapter;
-    private ArrayList<User> users = new ArrayList<>();
-    private Database database;
     private static final int RC_PROFILE_ACTIVITY = 1;
     private static final int RC_PROFILE_UPDATE = 2;
+    private MainPageActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        users = loadUsers();
+        viewModel = ViewModelProviders.of(this).get(MainPageActivityViewModel.class);
         setContentView(R.layout.activity_main_page);
         ButterKnife.bind(this);
         setupListView();
@@ -48,16 +49,16 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
 
     private void setupListView() {
         lvProfile.setEmptyView(lblEmpty);
-        adapter = new MainPageActivityAdapter(this, users, this);
+        adapter = new MainPageActivityAdapter(this, viewModel.getData(), this);
         lvProfile.setAdapter(adapter);
     }
 
     private void deleteUser(int position) {
         User user = adapter.getItem(position);
-        database.deleteUser(position);
+        viewModel.getDatabase().deleteUser(position);
         adapter.notifyDataSetChanged();
         Snackbar.make(lvProfile, getString(R.string.MainPageActivity_remove_user, user.getName()), Snackbar.LENGTH_LONG).setAction(getString(R.string.MainPageActivity_undo_user), view -> {
-            database.insertUser(user, position);
+            viewModel.getDatabase().insertUser(user, position);
             adapter.notifyDataSetChanged();
         }).show();
     }
@@ -66,10 +67,9 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
         ProfileActivity.startForResult(this, RC_PROFILE_UPDATE, user, position);
     }
 
-    private ArrayList<User> loadUsers() {
-        database = Database.getInstance();
-        return database.getUsers();
-    }
+
+
+
 
     @OnClick(R.id.lblEmpty)
     public void addNewUser() {
@@ -95,14 +95,14 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
         if (resultCode == RESULT_OK && requestCode == RC_PROFILE_ACTIVITY) {
             if (data.hasExtra("user")) {
                 User user = data.getParcelableExtra("user");
-                database.addUser(user);
+                viewModel.getDatabase().addUser(user);
                 adapter.notifyDataSetChanged();
             }
         }
         if (resultCode == RESULT_OK && requestCode == RC_PROFILE_UPDATE) {
             if (data.hasExtra("user")) {
                 User user = data.getParcelableExtra("user");
-                database.updateUser(user, data.getIntExtra("positon", 0));
+                viewModel.getDatabase().updateUser(user, data.getIntExtra("positon", 0));
                 adapter.notifyDataSetChanged();
             }
         }
