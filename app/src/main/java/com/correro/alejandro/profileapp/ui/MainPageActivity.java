@@ -9,23 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.correro.alejandro.profileapp.R;
-import com.correro.alejandro.profileapp.data.Database;
 import com.correro.alejandro.profileapp.data.model.User;
 import com.correro.alejandro.profileapp.data.utils.IntentsUtils;
 import com.correro.alejandro.profileapp.data.utils.NetworkUtils;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-//TODO ARREGLAR QUE SI NO ES VALIDO LA WEB NO SE GUARDE EN EL USUARIO
-//TODO MODELVIEW, Y GUARDAR SOLO DATOS PRESENTES NO ATUALIZAR LISTVIEW
+
 public class MainPageActivity extends AppCompatActivity implements MainPageActivityAdapter.Callback {
 
     @BindView(R.id.lvProfile)
@@ -100,9 +95,9 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
             }
         }
         if (resultCode == RESULT_OK && requestCode == RC_PROFILE_UPDATE) {
-            if (data.hasExtra("user")) {
+            if (data.hasExtra("user")&&data.hasExtra("position")) {
                 User user = data.getParcelableExtra("user");
-                viewModel.getDatabase().updateUser(user, data.getIntExtra("positon", 0));
+                viewModel.getDatabase().updateUser(user, data.getIntExtra("position",0));
                 adapter.notifyDataSetChanged();
             }
         }

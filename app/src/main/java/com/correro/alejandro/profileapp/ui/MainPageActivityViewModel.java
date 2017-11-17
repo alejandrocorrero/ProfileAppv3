@@ -1,11 +1,8 @@
 package com.correro.alejandro.profileapp.ui;
 
 import android.arch.lifecycle.ViewModel;
-import android.widget.Toast;
 
-import com.correro.alejandro.profileapp.R;
 import com.correro.alejandro.profileapp.data.Database;
-import com.correro.alejandro.profileapp.data.model.Cat;
 import com.correro.alejandro.profileapp.data.model.User;
 
 import java.util.ArrayList;

@@ -310,6 +310,8 @@ public class ProfileActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.activity_profile, menu);
         if (user != null)
             menu.findItem(R.id.mnuAccept).setTitle(R.string.menu_add_title);
+        else
+            menu.findItem(R.id.mnuAccept).setTitle(R.string.mnuAdd);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -342,5 +344,6 @@ public class ProfileActivity extends AppCompatActivity {
         setResult(RESULT_OK, result);
         finish();
     }
+
 
 }
