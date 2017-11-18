@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.correro.alejandro.profileapp.ui.ProfileActivity"
+    tools:context="com.correro.alejandro.profileapp.ui.Profile.ProfileActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
@@ -216,7 +216,7 @@
         android:layout_marginBottom="@dimen/activity_main_view_margin_default"
         android:layout_marginEnd="@dimen/activity_main_view_margin_default"
         android:alpha="0.6"
-        android:background="@color/test2"
+        android:background="@color/backGroundTextCatName"
         android:padding="@dimen/activity_main_lblCatName_padding"
         android:text="@string/activity_main_lblCatName_text"
         android:textColor="@color/activity_main_lblCatName_text_color"

@@ -11,14 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ProfileActivity"
+        <activity android:name=".ui.Profile.ProfileActivity"
             android:label="@string/activity_profile_name"
-            android:parentActivityName=".ui.MainPageActivity" />
+            android:parentActivityName=".ui.Main.MainPageActivity" />
         <activity
-            android:name=".ui.CatSelectionActivity"
+            android:name=".ui.CatSelect.CatSelectionActivity"
             android:label="@string/activity_cat_name"
-            android:parentActivityName=".ui.ProfileActivity" />
-        <activity android:name=".ui.MainPageActivity">
+            android:parentActivityName=".ui.Profile.ProfileActivity" />
+        <activity android:name=".ui.Main.MainPageActivity" android:theme="@style/ListSelect" android:label="@string/activity_main_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

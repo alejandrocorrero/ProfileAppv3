@@ -30,8 +30,18 @@
     <string name="activity_profile_name">Perfil Usuario</string>
     <string name="menu_add_title">Actualizar</string>
     <string name="profile_activity_option_fail">Añade información valida</string>
-    <string name="activity_main_page_listview_options_send_email">Send email</string>
-    <string name="activity_main_page_listview_options_call">Call</string>
-    <string name="activity_main_page_listview_options_adress">Show address in map</string>
-    <string name="activity_main_page_listview_options_browse_web">Browse web</string>
+    <string name="activity_main_page_listview_options_send_email">Enviar email</string>
+    <string name="activity_main_page_listview_options_dial">Marcar</string>
+    <string name="activity_main_page_listview_options_adress">Ver direccion en mapa</string>
+    <string name="activity_main_page_listview_options_browse_web">Ver página web</string>
+    <string name="activity_main_mnuDelete">Eliminar</string>
+    <string name="main_activity_number_of_number">%1$d de %2$d</string>
+    <string name="activity_main_item_lblEditUser_text">EDITAR</string>
+    <string name="activity_main_item_lblDeleteUser_text">ELIMINAR</string>
+    <string name="activity_main_item_lblOptions_text">OPCIONES</string>
+    <string name="activity_main_name">Usuarios</string>
+    <plurals name="mainPageActivity_remove_users">
+        <item quantity="one">%1$d usuario eliminado</item>
+        <item quantity="other">%1$d usuarios eliminados</item>
+    </plurals>
 </resources>

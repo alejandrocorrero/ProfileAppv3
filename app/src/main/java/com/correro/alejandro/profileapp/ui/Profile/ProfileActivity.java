@@ -1,4 +1,4 @@
-package com.correro.alejandro.profileapp.ui;
+package com.correro.alejandro.profileapp.ui.Profile;
 
 import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
@@ -21,6 +21,7 @@ import com.correro.alejandro.profileapp.data.model.User;
 import com.correro.alejandro.profileapp.data.utils.IntentsUtils;
 import com.correro.alejandro.profileapp.data.utils.NetworkUtils;
 import com.correro.alejandro.profileapp.data.utils.ValidationUtils;
+import com.correro.alejandro.profileapp.ui.CatSelect.CatSelectionActivity;
 
 import butterknife.BindColor;
 import butterknife.BindView;
@@ -65,7 +66,6 @@ public class ProfileActivity extends AppCompatActivity {
     TextView lblCatName;
     @BindColor(R.color.focus)
     int focusColor;
-    private static final String STATE_CAT = "STATE_CAT";
     final int RC_CAT = 1;
     private static final String EXTRA_USER = "EXTRA_USER";
     private static final String EXTRA_POSITION = "EXTRA_POSITION";

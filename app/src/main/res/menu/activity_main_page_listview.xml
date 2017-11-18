@@ -7,7 +7,7 @@
         app:showAsAction="withText" />
     <item
         android:id="@+id/mnuCall"
-        android:title="@string/activity_main_page_listview_options_call"
+        android:title="@string/activity_main_page_listview_options_dial"
         app:showAsAction="withText" />
     <item
         android:id="@+id/mnuShowAddress"

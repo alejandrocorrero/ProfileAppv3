@@ -1,4 +1,4 @@
-package com.correro.alejandro.profileapp.ui;
+package com.correro.alejandro.profileapp.ui.Profile;
 
 import android.arch.lifecycle.ViewModel;
 

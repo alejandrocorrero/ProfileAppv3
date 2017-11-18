@@ -1,4 +1,4 @@
-package com.correro.alejandro.profileapp.ui;
+package com.correro.alejandro.profileapp.ui.Main;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -6,8 +6,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,7 +17,11 @@ import android.widget.Toast;
 import com.correro.alejandro.profileapp.R;
 import com.correro.alejandro.profileapp.data.model.User;
 import com.correro.alejandro.profileapp.data.utils.IntentsUtils;
+import com.correro.alejandro.profileapp.data.utils.ListViewUtils;
 import com.correro.alejandro.profileapp.data.utils.NetworkUtils;
+import com.correro.alejandro.profileapp.ui.Profile.ProfileActivity;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +51,53 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
     private void setupListView() {
         lvProfile.setEmptyView(lblEmpty);
         adapter = new MainPageActivityAdapter(this, viewModel.getData(), this);
+        lvProfile.setChoiceMode(GridView.CHOICE_MODE_MULTIPLE_MODAL);
         lvProfile.setAdapter(adapter);
+        lvProfile.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode actionMode, int i, long l, boolean b) {
+                actionMode.setTitle(getString(R.string.main_activity_number_of_number,
+                        lvProfile.getCheckedItemCount(), lvProfile.getCount()));
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+                actionMode.getMenuInflater().inflate(R.menu.activity_main_contextual, menu);
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.mnuDelete:
+                        deleteUsers();
+                        break;
+                }
+                return true;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode actionMode) {
+
+            }
+        });
+
+
+    }
+
+    private void deleteUsers() {
+        List<Object> items = ListViewUtils.getSelectedItems(lvProfile, true);
+        for (Object item : items) {
+            viewModel.getDatabase().deleteUser((User) item);
+        }
+        Snackbar.make(lvProfile, getResources().getQuantityString(R.plurals.mainPageActivity_remove_users, items.size(), items.size()), Snackbar.LENGTH_LONG).show();
+        adapter.notifyDataSetChanged();
+
     }
 
     private void deleteUser(int position) {
@@ -61,9 +113,6 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
     private void editUser(User user, int position) {
         ProfileActivity.startForResult(this, RC_PROFILE_UPDATE, user, position);
     }
-
-
-
 
 
     @OnClick(R.id.lblEmpty)
@@ -95,9 +144,9 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
             }
         }
         if (resultCode == RESULT_OK && requestCode == RC_PROFILE_UPDATE) {
-            if (data.hasExtra("user")&&data.hasExtra("position")) {
+            if (data.hasExtra("user") && data.hasExtra("position")) {
                 User user = data.getParcelableExtra("user");
-                viewModel.getDatabase().updateUser(user, data.getIntExtra("position",0));
+                viewModel.getDatabase().updateUser(user, data.getIntExtra("position", 0));
                 adapter.notifyDataSetChanged();
             }
         }
@@ -153,6 +202,7 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
     @Override
     public void onDeleteUser(int position) {
         deleteUser(position);
+        lvProfile.setItemChecked(position, false);
     }
 
     @Override

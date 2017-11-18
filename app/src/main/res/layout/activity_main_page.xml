@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.correro.alejandro.profileapp.ui.MainPageActivity">
+    tools:context="com.correro.alejandro.profileapp.ui.Main.MainPageActivity">
 
 
     <GridView
@@ -14,8 +14,8 @@
         android:layout_marginBottom="@dimen/activity_main_view_margin_default"
         android:layout_marginEnd="@dimen/activity_main_view_margin_default"
         android:layout_marginStart="@dimen/activity_main_view_margin_default"
-        android:verticalSpacing="8dp"
-        android:horizontalSpacing="8dp"
+        android:verticalSpacing="@dimen/activity_main_view_margin_default"
+        android:horizontalSpacing="@dimen/activity_main_view_margin_default"
         android:layout_marginTop="@dimen/activity_main_view_margin_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package com.correro.alejandro.profileapp.ui;
+package com.correro.alejandro.profileapp.ui.CatSelect;
 
 import android.content.Intent;
 import android.os.Bundle;

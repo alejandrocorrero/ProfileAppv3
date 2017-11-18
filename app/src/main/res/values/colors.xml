@@ -3,7 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="test2">#838182</color>
+    <color name="backGroundTextCatName">#838182</color>
     <color name="activity_main_lblCatName_text_color">#FFFFFF</color>
-    <color name="focus">#1C1C1C</color>
+    <color name="focus">#FF4081</color>
+    <color name="colorActivated">#ededed</color>
+    <color name="colorActionModeBackground">#576de4</color>
+    <color name="activity_main_item_lblname_text_color">#000000</color>
+    <color name="activity_main_item_text_color">#000000</color>
 </resources>

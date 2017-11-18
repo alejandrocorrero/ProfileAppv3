@@ -49,4 +49,8 @@ public class Database {
     public void insertUser(User user, int position) {
         users.add(position, user);
     }
+
+    public void deleteUser(User user) {
+        users.remove(user);
+    }
 }
