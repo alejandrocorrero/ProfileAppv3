@@ -3,9 +3,7 @@ package com.correro.alejandro.profileapp.ui.Main;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;

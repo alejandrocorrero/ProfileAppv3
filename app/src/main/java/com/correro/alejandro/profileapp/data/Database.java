@@ -15,12 +15,14 @@ public class Database {
     private Database() {
 
         users = new ArrayList<User>();
-        //TODO PRUEBAS
+  /*
+        Test users
         users.add(new User("alex1","666666666","alex@hotmail.com", new Cat(R.drawable.cat1,"Jacob"),"https://hotmail.com","casa alex"));
         users.add(new User("alex2","666666666","alex@hotmail.com", new Cat(R.drawable.cat1,"Jacob"),"https://hotmail.com","casa alex"));
         users.add(new User("alex3","666666666","alex@hotmail.com", new Cat(R.drawable.cat1,"Jacob"),"https://hotmail.com","casa alex"));
         users.add(new User("alex4","666666666","alex@hotmail.com", new Cat(R.drawable.cat1,"Jacob"),"https://hotmail.com","casa alex"));
         users.add(new User("alex5","666666666","alex@hotmail.com", new Cat(R.drawable.cat1,"Jacob"),"https://hotmail.com","casa alex"));
+   */
     }
 
     public static synchronized Database getInstance() {
