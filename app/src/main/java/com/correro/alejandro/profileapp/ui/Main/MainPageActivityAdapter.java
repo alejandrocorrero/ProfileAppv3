@@ -34,8 +34,7 @@ public class MainPageActivityAdapter extends BaseAdapter {
 
         void onShowAdress(User user);
 
-        void onDeleteUser(int position);
-
+        void onDeleteUser(int position,User user);
         void onEditUser(User user, int position);
     }
 
@@ -116,7 +115,7 @@ public class MainPageActivityAdapter extends BaseAdapter {
             ivAvatar.setImageResource(user.getAvatar().getId());
             menuPopUp.setOnClickListener(v -> showPopup(user, v));
             lblEditUser.setOnClickListener(v -> mListener.onEditUser(user, position));
-            lblDeleteUser.setOnClickListener(v -> mListener.onDeleteUser(position));
+            lblDeleteUser.setOnClickListener(v -> mListener.onDeleteUser(position,user));
 
         }
     }

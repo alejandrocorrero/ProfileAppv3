@@ -100,12 +100,16 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
 
     }
 
-    private void deleteUser(int position) {
+    private void deleteUser(int position, List<Object> usersChecked, boolean isUserDeleteChecked) {
         User user = adapter.getItem(position);
         viewModel.getDatabase().deleteUser(position);
         adapter.notifyDataSetChanged();
         Snackbar.make(lvProfile, getString(R.string.MainPageActivity_remove_user, user.getName()), Snackbar.LENGTH_LONG).setAction(getString(R.string.MainPageActivity_undo_user), view -> {
+            ListViewUtils.getSelectedItems(lvProfile, true);
             viewModel.getDatabase().insertUser(user, position);
+            setCheckedUsersAfterDelete(usersChecked);
+            if(isUserDeleteChecked)
+                lvProfile.setItemChecked(position,true);
             adapter.notifyDataSetChanged();
         }).show();
     }
@@ -200,9 +204,19 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
     }
 
     @Override
-    public void onDeleteUser(int position) {
-        deleteUser(position);
-        lvProfile.setItemChecked(position, false);
+    public void onDeleteUser(int position, User user) {
+        boolean userDeleteIsChecked = lvProfile.isItemChecked(position);
+        List<Object> usersChecked = ListViewUtils.getSelectedItems(lvProfile, true);
+        deleteUser(position,usersChecked,userDeleteIsChecked);
+        usersChecked.remove(user);
+        setCheckedUsersAfterDelete(usersChecked);
+
+    }
+
+    private void setCheckedUsersAfterDelete(List<Object> usersChecked) {
+        for (int i = 0; i < usersChecked.size(); i++)
+            lvProfile.setItemChecked(viewModel.getDatabase().getUserPosition((User)usersChecked.get(i)), true);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
