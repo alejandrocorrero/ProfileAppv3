@@ -9,5 +9,5 @@
     <dimen name="activity_main_item_lblName_maxHeight">25dp</dimen>
     <dimen name="activity_main_item_maxHeight_default">15dp</dimen>
     <dimen name="activity_main_item_textSize_default">10sp</dimen>
-    <integer name="activity_main_colum">1</integer>
+    <integer name="activity_main_colum">2</integer>
 </resources>

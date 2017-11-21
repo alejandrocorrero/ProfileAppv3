@@ -105,11 +105,14 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
         viewModel.getDatabase().deleteUser(position);
         adapter.notifyDataSetChanged();
         Snackbar.make(lvProfile, getString(R.string.MainPageActivity_remove_user, user.getName()), Snackbar.LENGTH_LONG).setAction(getString(R.string.MainPageActivity_undo_user), view -> {
+            //Sets all items unchecked
             ListViewUtils.getSelectedItems(lvProfile, true);
             viewModel.getDatabase().insertUser(user, position);
+            //Set users checked after undo button
             setCheckedUsersAfterDelete(usersChecked);
-            if(isUserDeleteChecked)
-                lvProfile.setItemChecked(position,true);
+            //If it was checked before delete, if we click undo, set it back checked
+            if (isUserDeleteChecked)
+                lvProfile.setItemChecked(position, true);
             adapter.notifyDataSetChanged();
         }).show();
     }
@@ -205,17 +208,22 @@ public class MainPageActivity extends AppCompatActivity implements MainPageActiv
 
     @Override
     public void onDeleteUser(int position, User user) {
+        //Save the state of the item deleted
         boolean userDeleteIsChecked = lvProfile.isItemChecked(position);
+        //List of users Checked
         List<Object> usersChecked = ListViewUtils.getSelectedItems(lvProfile, true);
-        deleteUser(position,usersChecked,userDeleteIsChecked);
+        //Delete the user
+        deleteUser(position, usersChecked, userDeleteIsChecked);
+        //Uncheck the user
         usersChecked.remove(user);
         setCheckedUsersAfterDelete(usersChecked);
 
     }
 
+    //Method to change the check state of users,using the list of users checked.
     private void setCheckedUsersAfterDelete(List<Object> usersChecked) {
         for (int i = 0; i < usersChecked.size(); i++)
-            lvProfile.setItemChecked(viewModel.getDatabase().getUserPosition((User)usersChecked.get(i)), true);
+            lvProfile.setItemChecked(viewModel.getDatabase().getUserPosition((User) usersChecked.get(i)), true);
         adapter.notifyDataSetChanged();
     }
 

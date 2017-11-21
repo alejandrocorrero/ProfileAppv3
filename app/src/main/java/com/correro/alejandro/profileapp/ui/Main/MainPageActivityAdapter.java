@@ -125,6 +125,12 @@ public class MainPageActivityAdapter extends BaseAdapter {
         PopupMenu popup = new PopupMenu(v.getContext(), v);
         MenuInflater menuInflater = popup.getMenuInflater();
         menuInflater.inflate(R.menu.activity_main_page_listview, popup.getMenu());
+        setStatePopupItems(user, popup);
+        popup.setOnMenuItemClickListener(menuItem -> onMenuItemClick(user, menuItem));
+        popup.show();
+    }
+    //Set enable or disable buttons of popup menu
+    private void setStatePopupItems(User user, PopupMenu popup) {
         if (user.getWeb().equals(""))
             popup.getMenu().findItem(R.id.mnuBrowser).setEnabled(false);
         else
@@ -133,8 +139,6 @@ public class MainPageActivityAdapter extends BaseAdapter {
             popup.getMenu().findItem(R.id.mnuShowAddress).setEnabled(false);
         else
             popup.getMenu().findItem(R.id.mnuShowAddress).setEnabled(true);
-        popup.setOnMenuItemClickListener(menuItem -> onMenuItemClick(user, menuItem));
-        popup.show();
     }
 
     private boolean onMenuItemClick(User user, MenuItem menuItem) {

@@ -14,23 +14,24 @@
         android:layout_marginBottom="@dimen/activity_main_view_margin_default"
         android:layout_marginEnd="@dimen/activity_main_view_margin_default"
         android:layout_marginStart="@dimen/activity_main_view_margin_default"
-        android:verticalSpacing="@dimen/activity_main_view_margin_default"
-        android:horizontalSpacing="@dimen/activity_main_view_margin_default"
         android:layout_marginTop="@dimen/activity_main_view_margin_default"
+        android:horizontalSpacing="@dimen/activity_main_view_margin_default"
+        android:numColumns="@integer/activity_main_colum"
+        android:verticalSpacing="@dimen/activity_main_view_margin_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/activity_main_item"/>
+        tools:listitem="@layout/activity_main_item" />
 
     <TextView
         android:id="@+id/lblEmpty"
-        android:text="@string/activity_main_page_lblEmpty_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:text="@string/activity_main_page_lblEmpty_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
